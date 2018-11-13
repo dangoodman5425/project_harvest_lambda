@@ -15,4 +15,5 @@ def lambda_handler(event, context):
         base_url=YELP_BASE_URL, latitude=latitude, longitude=longitude, limit=limit)
     if radius:
         url += "&radius={radius}".format(radius=radius)
-    return requests.get(url, headers={"Authorization": "Bearer {access_token}".format(access_token=YELP_API_KEY)})
+    return requests.get(url, headers={"Authorization": "Bearer {access_token}".format(access_token=YELP_API_KEY)}).json()
+
